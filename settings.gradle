@@ -1,0 +1,7 @@
+rootProject.name = 'MPT-plus'
+include 'application'
+include 'domain'
+include 'persistence'
+include 'web'
+
+
