@@ -1,8 +1,8 @@
-package com.morocco.mpt.Controller;
+package com.morocco.mpt.Controller.employee;
 
 
 import com.morocco.mpt.domain.employee.Employee;
-import com.morocco.mpt.service.EmployeeService;
+import com.morocco.mpt.service.employee.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

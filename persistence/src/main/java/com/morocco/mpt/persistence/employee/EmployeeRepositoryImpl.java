@@ -1,7 +1,7 @@
 package com.morocco.mpt.persistence.employee;
 
 import com.morocco.mpt.domain.employee.Employee;
-import com.morocco.mpt.service.IEmployeeRepository;
+import com.morocco.mpt.service.employee.IEmployeeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

@@ -4,14 +4,16 @@ server:
   port: 5000
 
 spring:
-  security:
-    user:
-      name: rami
-      password: r@123
+  main:
+    allowcircular-references: true
+  #  security:
+#    user:
+#      name: rami
+#      password: r@123
 
   datasource:
     core:
-      jdbc-url: jdbc:postgresql://localhost:5432/mpt_core
+      jdbc-url: jdbc:postgresql://localhost:5432/mpt_core1
       username: myuser
       password: mypassword
       driver-class-name: org.postgresql.Driver
@@ -29,7 +31,10 @@ spring:
     baseline-on-migrate: true
     # locations: classpath:db/migration/core
 
+
 logging:
   level:
-    org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener: OFF
-
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR

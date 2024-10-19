@@ -1,12 +1,9 @@
-CREATE TABLE IF NOT EXISTS Employee(
+CREATE TABLE IF NOT EXISTS employee(
 
        id   SERIAL      PRIMARY KEY,
-        firstName       VARCHAR(255),
-        secondName      VARCHAR(255),
+        firstname       VARCHAR(255),
+        secondname      VARCHAR(255),
         dateOfBirth     Date,
-        address         VARCHAR(255),
-        city            VARCHAR(255),
-        postalCode      VARCHAR(255),
         email           VARCHAR(255),
         phone           VARCHAR(255),
         jobTitle        VARCHAR(255),
@@ -17,14 +14,14 @@ CREATE TABLE IF NOT EXISTS Employee(
         status_code              VARCHAR(255) DEFAULT 'ACTIVE'
     );
 
-CREATE TABLE IF NOT EXISTS Users (
+CREATE TABLE IF NOT EXISTS users (
             id SERIAL       PRIMARY KEY,
             username        VARCHAR(255) UNIQUE NOT NULL,
-            email           VARCHAR(255) UNIQUE NOT NULL,
+            email           VARCHAR(255), --UNIQUE NOT NULL,
             password   VARCHAR(255) NOT NULL,
-            first_name      VARCHAR(255),
-            last_name       VARCHAR(255),
-            date_of_birth   DATE,
+            firstname      VARCHAR(255),
+            secondname       VARCHAR(255),
+            dateOfBirth   DATE,
             address         VARCHAR(255),
             city            VARCHAR(255),
             postal_code     VARCHAR(20),

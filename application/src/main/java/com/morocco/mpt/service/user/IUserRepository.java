@@ -1,4 +1,4 @@
-package com.morocco.mpt.service;
+package com.morocco.mpt.service.user;
 
 import com.morocco.mpt.domain.users.Users;
 
@@ -8,7 +8,9 @@ public interface IUserRepository {
 
 
 
-    String addUser(Users user, String userName);
+    Users save(Users user);
 
     List<Users> allUser();
+
+    Users getUser(String username);
 }

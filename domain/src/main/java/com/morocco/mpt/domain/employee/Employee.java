@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "Employee")
+@Table(name = "employee")
 public class Employee extends BaseEntity {
 
     @Id

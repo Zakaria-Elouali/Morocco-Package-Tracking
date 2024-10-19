@@ -1,4 +1,4 @@
-package com.morocco.mpt.service;
+package com.morocco.mpt.service.employee;
 
 import com.morocco.mpt.domain.employee.Employee;
 

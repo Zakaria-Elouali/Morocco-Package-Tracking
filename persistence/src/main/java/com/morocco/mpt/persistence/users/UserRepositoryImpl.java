@@ -2,7 +2,7 @@ package com.morocco.mpt.persistence.users;
 
 import com.morocco.mpt.domain.BaseEntity;
 import com.morocco.mpt.domain.users.Users;
-import com.morocco.mpt.service.IUserRepository;
+import com.morocco.mpt.service.user.IUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -16,24 +16,25 @@ public class UserRepositoryImpl implements IUserRepository {
     private final UserSpringRepository userSpringRepository;
 
     @Override
-    public String addUser(Users user, String userName){
-        try{
-            if (user != null){
-                user.setCreatedBy(userName);
+    public Users save(Users user){
+
+            if (user.getId() != null){
                 user.setCreatedAt(ZonedDateTime.now(ZoneId.of("Europe/Berlin")));
-                user.setLastModifiedBy(userName);
-                user.setLastModifiedAt(ZonedDateTime.now(ZoneId.of("Europe/Berlin")));
                 user.setStatusCode(BaseEntity.StatusCodes.ACTIVE);
-                userSpringRepository.save(user);
+            }else{
+                user.setLastModifiedAt(ZonedDateTime.now(ZoneId.of("Europe/Berlin")));
             }
-            return "";
-        } catch(Exception e){
-            return (e.getMessage());
-        }
+            return userSpringRepository.save(user);
     }
 
     @Override
     public List<Users> allUser(){
         return userSpringRepository.findAll();
+    }
+
+    @Override
+    public Users getUser(String username) {
+        return (Users) userSpringRepository.findByUsername(username)
+                .orElseThrow(() -> new IllegalArgumentException("No user found"));
     }
 }

@@ -2,64 +2,65 @@ package com.morocco.mpt.domain.users;
 
 import com.morocco.mpt.domain.BaseEntity;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
 import static jakarta.persistence.EnumType.STRING;
+import static lombok.EqualsAndHashCode.CacheStrategy.LAZY;
 
-
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
+@EqualsAndHashCode(cacheStrategy = LAZY, callSuper = true)
+//@Accessors(fluent = true)
 @Entity
-@Table(name = "Users")
-public class Users extends BaseEntity implements UserDetails {
+@Table(name = "users")
+public class Users extends BaseEntity implements UserDetails  {//
 
-
-    public Users(String username){
-        this.username = username;
-    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String first_name;
-    private String second_name;
+    private String firstname;
+    private String secondname;
 
-    @Column(unique = true) private String username;
+    @Column(unique = true, nullable=false) private String username;
     @Column(unique = true) private String email;
     @Column(unique = true) private String phone;
-    private Date date_of_birth;
+    private Date dateOfBirth;
     private String address;
     private String city;
     private String postal_code;
     private String country;
     @Enumerated(STRING) private Role role;
+    public enum Role {SUPERADMIN, ADMIN, USER, VIEWER}
 
     private String password;
-
-    public Users() {
-
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
     }
 
-    @Override
-    public String getPassword() {
-        return password;
-    }
+//    @Override
+//    public String getPassword() {
+//        return password;
+//    }
+//    @Override
+//    public String getUsername() {
+//        return username;
+//    }
 
-    public String username() {
-        return username;
-    }
 
-    public enum Role {SUPERADMIN, ADMIN, USER, VIEWER}
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
